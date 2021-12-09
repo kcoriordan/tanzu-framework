@@ -22,6 +22,7 @@ kappController:
   deployment:
     concurrency: 4
     hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
     priorityClassName: system-cluster-critical
     apiPort: 10100
     metricsBindAddress: 0
