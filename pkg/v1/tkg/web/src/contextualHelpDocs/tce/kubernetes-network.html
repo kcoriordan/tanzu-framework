@@ -1,0 +1,19 @@
+<!--
+title: Docker Daemon
+tags: [tce-docker, tce-docker-daemon]
+-->
+<ol>
+<li><p>Review the <strong>Cluster Service CIDR</strong> and <strong>Cluster Pod CIDR</strong> ranges. If the recommended CIDR ranges of <code>100.64.0.0/13</code> and <code>100.96.0.0/11</code> are unavailable, update the values under <strong>Cluster Service CIDR</strong> and <strong>Cluster Pod CIDR</strong>.</p>
+</li>
+<li><p>(Optional) To send outgoing HTTP(S) traffic from the management cluster to a proxy, toggle <strong>Enable Proxy Settings</strong> and follow the instructions below to enter your proxy information. Tanzu applies these settings to kubelet, containerd, and the control plane. You can choose to use one proxy for HTTP traffic and another proxy for HTTPS traffic or to use the same proxy for both HTTP and HTTPS traffic.</p>
+<ul>
+<li><p>To add your HTTP proxy information: Under <strong>HTTP Proxy URL</strong>, enter the URL of the proxy that handles HTTP requests. The URL must start with <code>http://</code>. For example, <code>http://myproxy.com:1234</code>.  If the proxy requires authentication, under <strong>HTTP Proxy Username</strong> and <strong>HTTP Proxy Password</strong>, enter the username and password to use to connect to your HTTP proxy.</p>
+</li>
+<li><p>To add your HTTPS proxy information: If you want to use the same URL for both HTTP and HTTPS traffic, select <strong>Use the same configuration for https proxy</strong>.  If you want to use a different URL for HTTPS traffic, enter the URL of the proxy that handles HTTPS requests. The URL must start with <code>http://</code>. For example, <code>http://myproxy.com:1234</code>. If the proxy requires authentication, under <strong>HTTPS Proxy Username</strong> and <strong>HTTPS Proxy Password</strong>, enter the username and password to use to connect to your HTTPS proxy.</p>
+</li>
+<li><p>Under <strong>No proxy</strong>, enter a comma-separated list of network CIDRs or hostnames that must bypass the HTTP(S) proxy. For example, <code>noproxy.yourdomain.com,192.168.0.0/24</code>. Internally, Tanzu appends <code>localhost</code>, <code>127.0.0.1</code>, your VPC CIDR, <strong>Cluster Pod CIDR</strong>, and <strong>Cluster Service CIDR</strong>, <code>.svc</code>, <code>.svc.cluster.local</code>, and <code>169.254.0.0/16</code> to the list that you enter in this field.</p>
+<p><strong>Important:</strong> If the management cluster VMs need to communicate with external services and infrastructure endpoints in your Tanzu environment, ensure that those endpoints are reachable by the proxies that you configured above or add them to <strong>No proxy</strong>. Depending on your environment configuration, this may include, but is not limited to, your OIDC or LDAP server, and Harbor.</p>
+</li>
+</ul>
+</li>
+</ol>

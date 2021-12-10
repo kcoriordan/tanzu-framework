@@ -1,0 +1,42 @@
+<!--
+title: Docker Daemon
+tags: [tce-docker, tce-docker-daemon]
+-->
+<ol>
+<li><p>In the <strong>Identity Management</strong> section, optionally uncheck <strong>Enable Identity Management Settings</strong>. You can deactivate identity management for proof-of-concept deployments, but it is strongly recommended to implement identity management in production deployments. If you deactivate identity management, you can activate it later.</p>
+</li>
+<li><p>If you selected identity management, select <strong>OIDC</strong> or <strong>LDAPS</strong>.</p>
+<p><strong>OIDC</strong>:</p>
+<p>Provide details of your OIDC provider account, for example, Okta.</p>
+<ul>
+<li><strong>Issuer URL</strong>: The IP or DNS address of your OIDC server.</li>
+<li><strong>Client ID</strong>: The <code>client_id</code> value that you obtain from your OIDC provider. For example, if your provider is Okta, log in to Okta, create a Web application, and select the <strong>Client Credentials</strong> options to get a <code>client_id</code> and <code>secret</code>.</li>
+<li><strong>Client Secret</strong>: The <code>secret</code> value that you obtain from your OIDC provider.</li>
+<li><strong>Scopes</strong>: A comma-separated list of additional scopes to request in the token response. For example, <code>openid,groups,email</code>.</li>
+<li><strong>Username Claim</strong>: The name of your username claim. This is used to set a user&#39;s username in the JSON Web Token (JWT) claim. Depending on your provider, enter claims such as <code>user_name</code>, <code>email</code>, or <code>code</code>.</li>
+<li><strong>Groups Claim</strong>: The name of your group&#39;s claim. This is used to set a user&#39;s group in the JWT claim. For example, <code>groups</code>.</li>
+</ul>
+<p><strong>LDAPS</strong>:</p>
+<p>Provide details of your company&#39;s LDAPS server. All settings except for <strong>LDAPS Endpoint</strong> are optional.</p>
+<ul>
+<li><strong>LDAPS Endpoint</strong>: The IP or DNS address of your LDAPS server. Provide the address and port of the LDAP server, in the form <code>host:port</code>.</li>
+<li><strong>Bind DN</strong>: The DN for an application service account. The connector uses these credentials to search for users and groups. Not required if the LDAP server provides access for anonymous authentication.</li>
+<li><strong>Bind Password</strong>: The password for an application service account, if <strong>Bind DN</strong> is set.</li>
+</ul>
+<p>Provide the user search attributes.</p>
+<ul>
+<li><strong>Base DN</strong>: The point from which to start the LDAP search. For example, <code>OU=Users,OU=domain,DC=io</code>.</li>
+<li><strong>Filter</strong>: A filter used by the LDAP search. For example, <code>objectClass=group</code>.</li>
+<li><strong>Username</strong>: The LDAP attribute that contains the user ID. For example, <code>uid, sAMAccountName</code>.</li>
+</ul>
+<p>Provide the group search attributes.</p>
+<ul>
+<li><strong>Base DN</strong>: The point from which to start the LDAP search. For example, <code>OU=Groups,OU=domain,DC=io</code>.</li>
+<li><strong>Filter</strong>: A filter used by the LDAP search. For example, <code>objectClass=group</code>.</li>
+<li><strong>Name Attribute</strong>: The LDAP attribute that holds the name of the group. For example, <code>cn</code>.</li>
+<li><strong>User Attribute</strong>: The attribute of the user record that is used as the value of the membership attribute of the group record. For example, <code>distinguishedName, DN</code>.</li>
+<li><strong>Group Attribute</strong>:  The attribute of the group record that holds the user/member information. For example, <code>member</code>.</li>
+</ul>
+<p>Paste the contents of the LDAPS server CA certificate into the <strong>Root CA</strong> text box.</p>
+</li>
+</ol>

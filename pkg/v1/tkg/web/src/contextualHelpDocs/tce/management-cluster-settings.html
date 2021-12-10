@@ -1,0 +1,19 @@
+
+
+<ol>
+<li><p>In the <strong>Management Cluster Settings</strong> section, select an instance size for either <strong>Development</strong> or <strong>Production</strong>. If you select <strong>Development</strong>, the installer deploys a management cluster with a single control plane node. If you select <strong>Production</strong>, the installer deploys a highly available management cluster with three control plane nodes. Use the <strong>Instance type</strong> drop-down menu to select from different combinations of CPU, RAM, and storage for the control plane node VM or VMs.  Choices are listed alphabetically, not by size. The minimum configuration is 2 CPUs and 8 GB memory. The list of compatible instance types varies in different regions. For information about the configuration of the different sizes of instances, see <a href="https://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a>.</p>
+</li>
+<li><p>(Optional) Enter a name for your management cluster. If you do not specify a name, the installer generates a unique name. If you do specify a name, the name must end with a letter, not a numeric character, and must be compliant with DNS hostname requirements as outlined in <a href="https://tools.ietf.org/html/rfc952">RFC 952</a> and amended in <a href="https://tools.ietf.org/html/rfc1123">RFC 1123</a>.</p>
+</li>
+<li>Under <strong>Worker Node Instance Type</strong>, select the configuration for the worker node VM.  If you select an instance type in the <strong>Production</strong> tile, the instance type that you select is automatically selected for the <strong>Worker Node Instance Type</strong>. If necessary, you can change this.</li>
+<li><a href="https://cluster-api.sigs.k8s.io/developer/architecture/controllers/machine-health-check.html#machinehealthcheck"><code>MachineHealthCheck</code></a> is selected by default. <code>MachineHealthCheck</code> provides node health monitoring and node auto-repair on the clusters that you deploy with this management cluster. You can activate or deactivate <code>MachineHealthCheck</code> on clusters after deployment by using the CLI.</li>
+<li>(Optional) Disable the <strong>Bastion Host</strong> checkbox if a bastion host already exists in the availability zone(s) in which you are deploying the management cluster.</li>
+<li><p>Configure Availability Zones. From the <strong>Availability Zone 1</strong> drop-down menu, select an availability zone for the management cluster. You can select only one availability zone in the <strong>Development</strong> tile.  If you selected the <strong>Production</strong> tile, use the <strong>Availability Zone 1</strong>, <strong>Availability Zone 2</strong>, and <strong>Availability Zone 3</strong> drop-down menus to select three unique availability zones for the management cluster. When Tanzu deploys the management cluster, which includes three control plane nodes, it distributes the control plane nodes across these availability zones.</p>
+</li>
+<li><p>To complete the configuration of the <strong>Management Cluster Settings</strong> section, do one of the following:</p>
+<ul>
+<li>If you created a new VPC in the <strong>VPC for AWS</strong> section, click <strong>Next</strong>.</li>
+<li>If you selected an existing VPC in the <strong>VPC for AWS</strong> section, use the <strong>VPC public subnet</strong> and <strong>VPC private subnet</strong> drop-down menus to select existing subnets on the VPC and click <strong>Next</strong>.</li>
+</ul>
+</li>
+</ol>
